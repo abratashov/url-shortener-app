@@ -1,4 +1,6 @@
 class ShortUrlsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_short_url, only: [:show]
 
   def show
@@ -12,12 +14,10 @@ class ShortUrlsController < ApplicationController
     create_service = ShortUrl::CreateService.call(current_user, short_url_params)
     @short_url = create_service.result
 
-    respond_to do |format|
-      if create_service.success?
-        format.html { redirect_to @short_url, notice: 'Short url was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if create_service.success?
+      redirect_to @short_url, notice: I18n.t('short_url.successfully_created')
+    else
+      render :new
     end
   end
 

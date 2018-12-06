@@ -5,4 +5,5 @@ class ShortUrl < ApplicationRecord
   validates :short_link, presence: true, uniqueness: true
 
   belongs_to :user
+  has_many :redirections
 end

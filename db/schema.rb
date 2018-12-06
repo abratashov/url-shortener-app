@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_115303) do
+ActiveRecord::Schema.define(version: 2018_12_06_151437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "redirections", force: :cascade do |t|
+    t.bigint "short_url_id"
+    t.json "user_info", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["short_url_id"], name: "index_redirections_on_short_url_id"
+  end
 
   create_table "short_urls", force: :cascade do |t|
     t.string "link"
@@ -22,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_115303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "redirections_count", default: 0
     t.index ["user_id"], name: "index_short_urls_on_user_id"
   end
 
@@ -37,5 +46,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_115303) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "redirections", "short_urls"
   add_foreign_key "short_urls", "users"
 end
