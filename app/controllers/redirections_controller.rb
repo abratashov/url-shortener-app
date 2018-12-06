@@ -1,4 +1,4 @@
-class RedirectionsController < ApplicationController
+class RedirectionsController < PublicController
   def index
     redirecion_service = RedirectionService.call(params, request)
     short_url = redirecion_service.result

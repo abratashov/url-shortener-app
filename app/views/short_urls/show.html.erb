@@ -2,10 +2,10 @@
 
 <p>
   <strong>Link:</strong>
-  <%= @short_url.link %>
+  <%= link_to @short_url.link, @short_url.link, target: :_blank %>
 </p>
 
 <p>
   <strong>Short link:</strong>
-  <%= @short_url.short_link %>
+  <%= link_to @short_url.full_short_link, @short_url.full_short_link, target: :_blank %>
 </p>

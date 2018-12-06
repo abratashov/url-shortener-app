@@ -6,4 +6,8 @@ class ShortUrl < ApplicationRecord
 
   belongs_to :user
   has_many :redirections
+
+  def full_short_link
+    "#{ENV['APP_DEFAULT_URL_OPTIONS_HOST']}/#{short_link}"
+  end
 end

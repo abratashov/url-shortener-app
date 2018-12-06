@@ -1,5 +1,3 @@
 class ApplicationController < ActionController::Base
-  def home
-    render json: 'Home page'
-  end
+  before_action :authenticate_user!
 end

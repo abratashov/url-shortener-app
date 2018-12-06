@@ -1,6 +1,4 @@
 class ShortUrlsController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :set_short_url, only: [:show]
 
   def show

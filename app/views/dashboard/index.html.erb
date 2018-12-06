@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<%= render partial: 'user_header' %>
+<%= link_to 'New Short Url', new_short_url_path %>
+
+<h1>Dashboard</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Short Link</th>
+      <th>Redirections Count</th>
+      <th>Statistics</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @short_urls.each do |short_url| %>
+      <tr>
+        <td><%= link_to short_url.link, short_url.link, target: :_blank %></td>
+        <td><%= link_to short_url.full_short_link, short_url.full_short_link, target: :_blank %></td>
+        <td><%= short_url.redirections_count %></td>
+        <td><%= link_to 'Statistics', statistics_path(short_url.short_link) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
