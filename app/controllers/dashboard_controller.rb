@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
     @short_urls = current_user.short_urls
     # of course it needs to add some pagination
 
-    # also need some time to find why CSV isn't supported by MIME
+    # also need some time to find why CSV isn't supported by rails MIME
     # respond_to do |format|
     #   format.html
     #   format.csv { send_data(CsvExporter.to_csv(@short_urls, %w(link short_link redirections_count)), filename: "short_urls-#{Date.today}.csv") }

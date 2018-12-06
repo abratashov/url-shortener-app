@@ -21,6 +21,7 @@ class ShortUrlsController < ApplicationController
 
   private
     def set_short_url
+      #in future it could be replaced with some policy object (with help of 'pundit' for ex.)
       @short_url = ShortUrl.find(params[:id])
     end
 
