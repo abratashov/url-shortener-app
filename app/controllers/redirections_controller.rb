@@ -1,5 +1,5 @@
 class RedirectionsController < PublicController
-  def index
+  def show
     redirecion_service = RedirectionService.call(params, request)
     short_url = redirecion_service.result
 
