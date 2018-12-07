@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_151437) do
+ActiveRecord::Schema.define(version: 2018_12_07_200204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_151437) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "redirections_count", default: 0
+    t.index ["short_link", "user_id"], name: "index_short_urls_on_short_link_and_user_id", unique: true
+    t.index ["short_link"], name: "index_short_urls_on_short_link", unique: true
     t.index ["user_id"], name: "index_short_urls_on_user_id"
   end
 
