@@ -22,5 +22,14 @@ RSpec.describe ShortUrl::CreateService, type: :class do
       expect(service.success?).to be_falsey
       expect(service.errors).to include(/has already been taken/)
     end
+
+    it 'with wrong link for this domain' do
+      service = ShortUrl::CreateService.call(user, {
+        link: ENV['APP_DEFAULT_URL_OPTIONS_HOST'],
+        short_link: 'test-link'
+      })
+      expect(service.success?).to be_falsey
+      expect(service.errors).to include(/isn't supported/)
+    end
   end
 end

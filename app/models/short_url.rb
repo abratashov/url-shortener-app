@@ -1,5 +1,5 @@
 class ShortUrl < ApplicationRecord
-  include ShortLinkGenerator
+  include LinkShortener
 
   validates :link, presence: true, url: true
   validates :short_link, presence: true, uniqueness: true

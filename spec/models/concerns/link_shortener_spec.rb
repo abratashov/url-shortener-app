@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-shared_examples_for ShortLinkGenerator do
+shared_examples_for LinkShortener do
   context 'methods' do
     subject { described_class }
 
@@ -9,5 +9,5 @@ shared_examples_for ShortLinkGenerator do
 end
 
 describe ShortUrl do
-  it_behaves_like ShortLinkGenerator
+  it_behaves_like LinkShortener
 end
